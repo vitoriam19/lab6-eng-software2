@@ -11,6 +11,15 @@ public class Manipulacoes {
             throw new Exception("Capacidade maxima de pecas atingida");
         }
 
+        Peca pecaNoEstoque = null;
+        try {
+            pecaNoEstoque = estoque.achaPeca(ID);
+        } catch (Exception e){}
+
+        if(pecaNoEstoque != null) {
+            throw new Exception("Nao e possivel adicionar outra peca com o mesmo ID");
+        }
+
         Peca peca = new Peca(ID, valor);
         estoque.addPeca(peca);
         System.out.println("Peca " + ID + " adicionada com sucesso!!");
